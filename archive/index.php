@@ -51,11 +51,22 @@ if(isset($_POST['sketchCode'])) {
 				line-height: 0px;
 			}
 
+			#preview {
+				width: 100%;
+				height: 100%;
+				position: fixed;
+				z-index: -3;
+				font-family: monospace;
+				color: rgba(0,0,0,0.4);
+				line-height: 0px;
+				opacity: 0.5;
+			}
+
 			.frame {
 				width:800px;
 				border: 50px solid #000;
 				opacity: 1;
-	
+
 			}
 			.element {
 				width: 800px;
@@ -125,17 +136,18 @@ if(isset($_POST['sketchCode'])) {
 	<body>
 
 		<div class="bg" id="bg"></div>
+		<div id="preview"></div>
 
 		<div class="menu">
-			<a href="../" style="margin-right:50px;">_three.js playGnd</a>
-			<a href="../gui" style="margin-right:50px">[1] gui</a>
-			<a href="../editor/editor.html" target="_blank" style="margin-right:50px">[2] editor</a>
-    		<a href="../archive" style="color:#fff">[3] archive</a>
+			<a href="/threejs_playGnd/" style="margin-right:50px;">_three.js playGnd</a>
+			<a href="/threejs_playGnd/gui" style="margin-right:50px">[1] gui</a>
+			<a href="/threejs_playGnd/editor/editor.html" target="_blank" style="margin-right:50px">[2] editor</a>
+    		<a href="/threejs_playGnd/archive" style="color:#fff">[3] archive</a>
 		</div>
 
 		<div class="nfo" id="nfo">
-			<img src="../images/arrows.gif"><br>
-			<img src="../images/enter.gif">
+			<img src="/threejs_playGnd/images/arrows.gif"><br>
+			<img src="/threejs_playGnd/images/enter.gif">
 		</div>
 
 <!-- 		<div class="frame">
@@ -144,25 +156,26 @@ if(isset($_POST['sketchCode'])) {
 			<div class="author">by Nick Briz</div>
 		</div>
 		</div> -->
-		
-		<script src="../js/three.min.js"></script>
-		<script src="../js/Detector.js"></script>
-		<script src="../js/tween.min.js"></script>
-		<script src="../js/CSS3DRenderer.js"></script>
 
-		<script src="../editor/js/codemirror/codemirror.js"></script>
-		<script src="../editor/js/rawinflate.js"></script>
+		<script src="/threejs_playGnd/js/three.min.js"></script>
+		<script src="/threejs_playGnd/js/Detector.js"></script>
+		<script src="/threejs_playGnd/js/tween.min.js"></script>
+		<script src="/threejs_playGnd/js/CSS3DRenderer.js"></script>
+
+		<script src="/threejs_playGnd/js/codemirror/codemirror.js"></script>
+		<script src="/threejs_playGnd/js/rawinflate.js"></script>
 
 		<script>
 
 			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
-			
+
+
 			var data = [
 
 				<?php
 
-					$con=mysqli_connect("myhost","myuser","mypassw","mybd");
-					//$con=mysqli_connect("myhost","myuser","mypassw","mybd");
+					$con=mysqli_connect("mysql-server","root","secret","mydb");
+					//$con=mysqli_connect("mysql-server","myuser","mypassw","mydb");
 					// Check connection
 					if (mysqli_connect_errno()) {
 						echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -288,7 +301,7 @@ if(isset($_POST['sketchCode'])) {
 						var frame = document.createElement( 'a' );
 						frame.className = 'frame';
 						frame.href = "/threejs_playGnd/editor/?id="+ item[3] +"#B/" + item[2];
-						frame.target = "_blank";
+
 						frame.name = item[ 2 ];
 						frame.id = item[ 3 ];
 
@@ -512,7 +525,7 @@ if(isset($_POST['sketchCode'])) {
 				var bgh = document.body.style;
 				bgh.background =  "hsl("+h+",50%, 50%)";
 			}
-			setInterval(bgHue,50);
+			// setInterval(bgHue,50);
 
 
 			var decode = function ( string ) {
@@ -628,6 +641,33 @@ if(isset($_POST['sketchCode'])) {
 				bg.setValue(decode(document.getElementById(id).name));
 				document.getElementById('bg').children[0].children[0].style.top = "0px";	// fix CodeMirror bug
 				document.getElementById('bg').children[0].children[2].style.height = "0px"; // fix CodeMirror bug
+
+				var preview = document.getElementById( 'preview' );
+
+				if ( preview.children.length > 0 ) {
+
+					preview.removeChild( preview.firstChild );
+
+				}
+
+				value = decode(document.getElementById(id).name)
+				value = value.replace( '<script>', '<script>if ( window.innerWidth === 0 ) { window.innerWidth = parent.innerWidth; window.innerHeight = parent.innerHeight; }' );
+				value = value.replace( '<body>', '<body style="background: none;">')
+				value = value.replace('<script src="http://brangerbriz.net/labs/threejs_playGnd/js/three.min.js">', '<script src="/threejs_playGnd/js/three.min.js">');
+				value = value.replace('<script src="http://brangerbriz.net/labs/threejs_playGnd/js/Detector.js">', '<script src="/threejs_playGnd/js/Detector.js">');
+
+				var iframe = document.createElement( 'iframe' );
+				iframe.style.width = '100%';
+				iframe.style.height = '100%';
+				iframe.style.border = '0';
+				preview.appendChild( iframe );
+
+				var content = iframe.contentDocument || iframe.contentWindow.document;
+
+				content.open();
+				content.write( value );
+				content.close();
+
 
 				// move column up (where 'objects' is all the items in a column)
 				var objects = objArrays[curX];

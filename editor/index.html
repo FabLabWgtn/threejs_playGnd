@@ -206,7 +206,7 @@
 
 
 			var QueryString = function () {
-			  // This function is anonymous, is executed immediately and 
+			  // This function is anonymous, is executed immediately and
 			  // the return value is assigned to QueryString!
 			  var query_string = {};
 			  var query = window.location.search.substring(1);
@@ -224,7 +224,7 @@
 			    } else {
 			      query_string[pair[0]].push(pair[1]);
 			    }
-			  } 
+			  }
 			    return query_string;
 			} ();
 
@@ -333,7 +333,7 @@
 					surl.style.padding = '5px';
 					surl.style.marginTop = '20px';
 					surl.style.border = '0px';
-					div.appendChild( surl );				
+					div.appendChild( surl );
 
 					var dom = document.createElement( 'div' );
 					dom.innerHTML = 'long url';
@@ -367,7 +367,7 @@
 				}
 
 
-				
+
 
 				popup.set( div );
 				popup.show();
@@ -500,7 +500,7 @@
 			} )();
 
 
-			
+
 
 
 			// actions
@@ -528,6 +528,8 @@
 					// http://code.google.com/p/chromium/issues/detail?id=35980#c12
 
 					value = value.replace( '<script>', '<script>if ( window.innerWidth === 0 ) { window.innerWidth = parent.innerWidth; window.innerHeight = parent.innerHeight; }' );
+					value = value.replace('<script src="http://brangerbriz.net/labs/threejs_playGnd/js/three.min.js">', '<script src="/threejs_playGnd/js/three.min.js">');
+					value = value.replace('<script src="http://brangerbriz.net/labs/threejs_playGnd/js/Detector.js">', '<script src="/threejs_playGnd/js/Detector.js">');
 
 					content.open();
 					content.write( value );
