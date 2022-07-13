@@ -108,7 +108,7 @@ if(isset($_POST['sketchCode'])) {
 				position: absolute;
 				top:0px; left:0px;
 				height: 22px; width:100%;
-				color:#222; 
+				color:#222;
 				background-color: #000;
 				font-size: 13px;
 				font-family: 'Lucida Grande', Ariel, sans-serif;
@@ -228,7 +228,7 @@ if(isset($_POST['sketchCode'])) {
 			var windowHalfY = window.innerHeight / 2;
 
 			// global vars for navigation
-			var currentID = 'id1';
+			var currentID = 'id2';
 			var showingforks = true;
 			var myHistory = [];
 
@@ -676,11 +676,11 @@ if(isset($_POST['sketchCode'])) {
 					if(direction=='up'){ objects[i].position.y -= 400;  }
 				};
 
-				// if(direction=='right'){  
+				// if(direction=='right'){
 				// 	for(var i = 0; i < objArrays.length-1; i++) {
 				// 		var objects = objArrays[i];
-				// 		var inc = 0.25, 
-				// 			cur = (objects.element.style.opacity<1) ? objects.element.style.opacity : 1; 
+				// 		var inc = 0.25,
+				// 			cur = (objects.element.style.opacity<1) ? objects.element.style.opacity : 1;
 				// 			cur -= inc;
 				// 		for(var j = 0; j < objects.length; j++) {
 				// 			tweenback(objects[j],cur);
@@ -688,7 +688,7 @@ if(isset($_POST['sketchCode'])) {
 				// 	}
 				// }
 
-				// if(direction=='left'){  
+				// if(direction=='left'){
 				// 	for(var i = 0; i < objArrays.length-1; i++) {
 				// 		var objects = objArrays[i];
 				// 		for(var j = 0; j < objects.length; j++) {
@@ -699,12 +699,12 @@ if(isset($_POST['sketchCode'])) {
 				// }
 
 				var hasforks = false;
-		    	var itemIDz = [];					// collect all id's of forks for history
+		    	var itemIDz = [];					// collect all id's of forks for myHistory
 
 		    	// are there forks shown to the right of current column
-				if(curX < (history.length-1)){ showingforks = true; } 
+				if(curX < (myHistory.length-1)){ showingforks = true; }
 				else { showingforks = false; }
-		    					
+
 				//remove the previous item's forks if it had any
 				if(showingforks==true && direction!='right' || direction=='left'){
 
@@ -714,12 +714,12 @@ if(isset($_POST['sketchCode'])) {
 						(function(){
 
 							// remove any listed forks (and forks of forks)
-							var childColumns = (history.length-1) - curX;
+							var childColumns = (myHistory.length-1) - curX;
 							for (var i = 0; i < childColumns; i++) {
-								history.pop();	
+								myHistory.pop();
 								for (var j = 0; j < objArrays[objArrays.length-1].length; j++) {
 									var o = objArrays[objArrays.length-1][ j ];
-									o.parent.remove( o );				
+									o.parent.remove( o );
 									renderer.cameraElement.removeChild( o.element );
 								};
 								objArrays.pop();
