@@ -60,28 +60,28 @@
 <body>
 
     <div class="menu">
-        <a href="../" style="margin-right:50px">goto_index</a>
-        <a href="../gui" style="margin-right:50px">goto_gui</a>
-        <a href="../editor/indexb.html">goto_editor</a>
+        <a href="/threejs_playGnd//" style="margin-right:50px">goto_index</a>
+        <a href="/threejs_playGnd//gui" style="margin-right:50px">goto_gui</a>
+        <a href="/threejs_playGnd//editor/indexb.html">goto_editor</a>
     </div>
 
     <div class="wrapper">
 
-       
+
             <?php
 
-                    if (($list = fopen("sketches/playGNDarchive.csv", "r")) !== FALSE) {  
+                    if (($list = fopen("sketches/playGNDarchive.csv", "r")) !== FALSE) {
                         while (($data = fgetcsv($list, 10000, ",")) !== FALSE) {
-                            echo '<a href="http://brangerbriz.net/labs/threejs_playGnd/editor/#B/'.htmlspecialchars( $data[3]).'" target="_blank"><div class="item">' . $data[0] . " &nbsp;&nbsp;[by]&nbsp;&nbsp; ".$data[1]." &nbsp;&nbsp;[on]&nbsp;&nbsp; ".$data[2]."</div></a>"; 
+                            echo '<a href="/threejs_playGnd/editor/#B/'.htmlspecialchars( $data[3]).'" target="_blank"><div class="item">' . $data[0] . " &nbsp;&nbsp;[by]&nbsp;&nbsp; ".$data[1]." &nbsp;&nbsp;[on]&nbsp;&nbsp; ".$data[2]."</div></a>"; 
                         }
                         fclose($list);
                     }
 
             ?>
-        
+
     </div>
 
 
-    
+
 </body>
 </html>

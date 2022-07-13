@@ -16,8 +16,8 @@
 
 	mysqli_close($con);
 
-	// header( 'Location: http://brangerbriz.net/labs/threejs_playGnd/editor/?id=id'.$id.'#B/'.$code ) ; 	# WORX
-	header( 'Location: http://threejsplaygnd.brangerbriz.net/editor/?id=id'.$id.'#B/'.$code ) ;				# WORX
+	// header( 'Location: editor/?id=id'.$id.'#B/'.$code ) ; 	# WORX
+	header( 'Location: /editor/?id=id'.$id.'#B/'.$code ) ;				# WORX
 	// header( 'Location: http://threejsplaygnd.brangerbriz.com/editor/?id=id'.$id.'#B/'.$code ) ; 			# DOESN'T WORK
 
 	

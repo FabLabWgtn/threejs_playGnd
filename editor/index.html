@@ -3,15 +3,15 @@
 	<meta charset="utf-8">
 	<head>
 		<title>_playGnd - sketch</title>
-		<link rel="stylesheet" href="js/codemirror/codemirror.css">
-		<script src="js/codemirror/codemirror.js"></script>
-		<script src="js/codemirror/mode/xml.js"></script>
-		<script src="js/codemirror/mode/javascript.js"></script>
-		<script src="js/codemirror/mode/css.js"></script>
-		<script src="js/codemirror/mode/htmlmixed.js"></script>
-		<script src="js/rawinflate.js"></script>
-		<script src="js/rawdeflate.js"></script>
-		<script src="js/esprima.js"></script>
+		<link rel="stylesheet" href="/threejs_playGnd/js/codemirror/codemirror.css">
+		<script src="/threejs_playGnd/js/codemirror/codemirror.js"></script>
+		<script src="/threejs_playGnd/js/codemirror/mode/xml.js"></script>
+		<script src="/threejs_playGnd/js/codemirror/mode/javascript.js"></script>
+		<script src="/threejs_playGnd/js/codemirror/mode/css.js"></script>
+		<script src="/threejs_playGnd/js/codemirror/mode/htmlmixed.js"></script>
+		<script src="/threejs_playGnd/js/rawinflate.js"></script>
+		<script src="/threejs_playGnd/js/rawdeflate.js"></script>
+		<script src="/threejs_playGnd/js/esprima.js"></script>
 		<style>
 			@font-face {
 
@@ -175,24 +175,6 @@
 	</head>
 	<body>
 
-
-<!-- 		<h1>
-			<a href="http://brangerbriz.com" target="_blank"><img src="../images/spin2.gif"></a>
-			<a href="http://threejsplaygnd.brangerbriz.net"> _three.js playGnd</a>
-		<\/h1>
-		<br> 
-		built on the shoulders of these open source projects<br>
-		<a href="http://threejs.org/" target="_blank">three.js</a> 
-		+<br> 
-		<a href="http://github.com/mrdoob/htmleditor" target="_blank">HTML Editor</a>,
-		<a href="http://codemirror.net/" target="_blank">CodeMirror</a>, and
-		<a href="https://code.google.com/p/dat-gui/" target="_blank">dat.GUI</a> 
-		+<br>
-		inspired by the ideas/worx of<br>
-		<a href="http://hyperland.com/" target="_blank">Ted Nelson</a> and
-		<a href="http://www.mrdoob.com/" target="_blank">Mr.doob</a> -->
-
-
 		<div id="preview"></div>
 		<div id="editor"></div>
 		<div id="toolbar"></div>
@@ -334,7 +316,7 @@
 
 				if(QueryString.id==undefined){
 					var dom = document.createElement( 'div' );
-					dom.innerHTML = 'to get embed code visit the <a href="http://threejsplaygnd.brangerbriz.net/archive/" target="_blank">three.js playGnd archive</a>';
+					dom.innerHTML = 'to get embed code visit the <a href="/threejs_playGnd/archive/" target="_blank">three.js playGnd archive</a>';
 					dom.style.padding = '5px';
 					dom.style.border = '0px';
 					div.appendChild( dom );
@@ -346,7 +328,7 @@
 					div.appendChild( dom );
 
 					var surl = document.createElement( 'input' );
-					surl.value = 'http://threejsplaygnd.brangerbriz.net/s/?id='+QueryString.id.substring(2);
+					surl.value = '/threejs_playGnd/s/?id='+QueryString.id.substring(2);
 					surl.style.width = '400px';
 					surl.style.padding = '5px';
 					surl.style.marginTop = '20px';
@@ -361,7 +343,7 @@
 					div.appendChild( dom );
 
 					var url = document.createElement( 'input' );
-					url.value = 'http://brangerbriz.net/labs/threejs_playGnd/editor/#B/' + encode( editor.getValue() );
+					url.value = '/threejs_playGnd/editor/#B/' + encode( editor.getValue() );
 					url.style.width = '400px';
 					url.style.padding = '5px';
 					url.style.marginTop = '20px';
@@ -376,7 +358,7 @@
 					div.appendChild( dom );
 
 					var embed = document.createElement( 'input' );
-					embed.value = '<iframe width="640" height="360" src="http://brangerbriz.net/labs/threejs_playGnd/editor/#B/' + encode( editor.getValue() ) +'"></iframe>';
+					embed.value = '<iframe width="640" height="360" src="/threejs_playGnd/editor/#B/' + encode( editor.getValue() ) +'"></iframe>';
 					embed.style.width = '400px';
 					embed.style.padding = '5px';
 					embed.style.marginTop = '20px';
@@ -405,7 +387,7 @@
 			buttonFork.addEventListener( 'click', function ( event ) {
 
 				var dom = document.createElement( 'div' );
-				dom.innerHTML = 'Hey! If you\'re new to the threejs_playGnd <a href="http://threejsplaygnd.brangerbriz.net/" target="_blank">click here first</a> to learn what it\'s all about. <br><br> Otherwise, <a href="http://brangerbriz.net/labs/threejs_playGnd/editor/editor.html?id='+QueryString.id+'&data='+hash.substr( 2 )+'" target="_blank">click here</a> to "fork" this sketch and edit your own variation';
+				dom.innerHTML = 'Hey! If you\'re new to the threejs_playGnd <a href="/threejs_playGnd" target="_blank">click here first</a> to learn what it\'s all about. <br><br> Otherwise, <a href="/threejs_playGnd/editor/editor.html?id='+QueryString.id+'&data='+hash.substr( 2 )+'" target="_blank">click here</a> to "fork" this sketch and edit your own variation';
 				dom.style.width = '400px';
 				dom.style.padding = '5px';
 				dom.style.marginTop = '20px';
@@ -430,7 +412,7 @@
 				dom.style.padding = '5px';
 				dom.style.border = '0px';
 				dom.style.textAlign = 'center';
-				dom.innerHTML = '<h1><div style="float:left;margin-top:-60px"><a href="http://brangerbriz.com" target="_blank"><img src="../images/spin2.gif"></a></div><div style="margin-top:50px;margin-right:90px;"><a href="http://threejsplaygnd.brangerbriz.net"> _three.js playGnd</a></div><\/h1><br><br><br><br>built on the shoulders of these open source projects<br><a href="http://threejs.org/" target="_blank">three.js</a> ++ <a href="http://github.com/mrdoob/htmleditor" target="_blank">HTML Editor</a>, <a href="http://codemirror.net/" target="_blank">CodeMirror</a>, and <a href="https://code.google.com/p/dat-gui/" target="_blank">dat.GUI</a><br><br>inspired by the ideas/worx of<br><a href="http://hyperland.com/" target="_blank">Ted Nelson</a> and <a href="http://www.mrdoob.com/" target="_blank">Mr.doob</a>';
+				dom.innerHTML = '<h1><div style="float:left;margin-top:-60px"><a href="http://brangerbriz.com" target="_blank"><img src="/threejs_playGnd/images/spin2.gif"></a></div><div style="margin-top:50px;margin-right:90px;"><a href="http://threejsplaygnd.brangerbriz.net"> _three.js playGnd</a></div><\/h1><br><br><br><br>built on the shoulders of these open source projects<br><a href="http://threejs.org/" target="_blank">three.js</a> ++ <a href="http://github.com/mrdoob/htmleditor" target="_blank">HTML Editor</a>, <a href="http://codemirror.net/" target="_blank">CodeMirror</a>, and <a href="https://code.google.com/p/dat-gui/" target="_blank">dat.GUI</a><br><br>inspired by the ideas/worx of<br><a href="http://hyperland.com/" target="_blank">Ted Nelson</a> and <a href="http://www.mrdoob.com/" target="_blank">Mr.doob</a>';
 				popup.set( dom );
 				popup.show();
 
@@ -583,16 +565,5 @@
 
 
 		</script>
-		<script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-		  ga('create', 'UA-6098550-26', 'brangerbriz.net');
-		  ga('send', 'pageview');
-
-		</script>
-
 	</body>
 </html>

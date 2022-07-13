@@ -3,18 +3,18 @@
 	<meta charset="utf-8">
 	<head>
 		<title>_playGnd - editor</title>
-		
+
 		<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
-		<link rel="stylesheet" href="js/codemirror/codemirror.css">
-		<script src="js/codemirror/codemirror.js"></script>
-		<script src="js/codemirror/mode/xml.js"></script>
-		<script src="js/codemirror/mode/javascript.js"></script>
-		<script src="js/codemirror/mode/css.js"></script>
-		<script src="js/codemirror/mode/htmlmixed.js"></script>
-		<script src="js/rawinflate.js"></script>
-		<script src="js/rawdeflate.js"></script>
-		<script src="js/esprima.js"></script>
+		<link rel="stylesheet" href="/threejs_playGnd/js/codemirror/codemirror.css">
+		<script src="/threejs_playGnd/js/codemirror/codemirror.js"></script>
+		<script src="/threejs_playGnd/js/codemirror/mode/xml.js"></script>
+		<script src="/threejs_playGnd/js/codemirror/mode/javascript.js"></script>
+		<script src="/threejs_playGnd/js/codemirror/mode/css.js"></script>
+		<script src="/threejs_playGnd/js/codemirror/mode/htmlmixed.js"></script>
+		<script src="/threejs_playGnd/js/rawinflate.js"></script>
+		<script src="/threejs_playGnd/js/rawdeflate.js"></script>
+		<script src="/threejs_playGnd/js/esprima.js"></script>
 		<style>
 			@font-face {
 
@@ -211,10 +211,10 @@
 	<body>
 
 		<div class="menu">
-			<a href="../" style="margin-right:50px;">_three.js playGnd</a>
-			<a href="../gui" style="margin-right:50px">[1] gui</a>
-			<a href="../editor/editor.html" target="_blank" style="margin-right:50px;color:#fff">[2] editor</a>
-    		<a href="../archive">[3] archive</a>
+			<a href="/threejs_playGnd/" style="margin-right:50px;">_three.js playGnd</a>
+			<a href="/threejs_playGnd/gui" style="margin-right:50px">[1] gui</a>
+			<a href="/threejs_playGnd/editor/editor.html" target="_blank" style="margin-right:50px;color:#fff">[2] editor</a>
+    		<a href="/threejs_playGnd/archive">[3] archive</a>
 		</div>
 
 		<div id="preview"></div>
@@ -224,63 +224,63 @@
 			<div id="snip">
 
 				<a href="https://gist.github.com/nbriz/90cabdeb21ea2510c5ae" target="_blank" onclick="closeThis()"><div>
-					<img src="../images/snip1.gif"> <br> rotate mesh
+					<img src="/threejs_playGnd/images/snip1.gif"> <br> rotate mesh
 				</div></a>
 
 				<a href="https://gist.github.com/nbriz/41ba4223df04c3fa4abd" target="_blank" onclick="closeThis()"><div>
-					<img src="../images/snip2.gif"> <br> swing camera and/or mesh
+					<img src="/threejs_playGnd/images/snip2.gif"> <br> swing camera and/or mesh
 				</div></a>
 
 				<a href="https://gist.github.com/nbriz/65bca341f3b7eadb2874" target="_blank" onclick="closeThis()"><div>
-					<img src="../images/snip3.gif"> <br> keep camera focused on mesh
+					<img src="/threejs_playGnd/images/snip3.gif"> <br> keep camera focused on mesh
 				</div></a>
 
 				<a href="https://gist.github.com/nbriz/27eab66b01f3cc09d8c2" target="_blank" onclick="closeThis()"><div>
-					<img src="../images/snip4.gif"> <br> leave trails
+					<img src="/threejs_playGnd/images/snip4.gif"> <br> leave trails
 				</div></a>
 
 				<a href="https://gist.github.com/nbriz/0d92ea0b91a81c7dd6fd" target="_blank" onclick="closeThis()"><div>
-					<img src="../images/snip5.gif"> <br> random mesh color
+					<img src="/threejs_playGnd/images/snip5.gif"> <br> random mesh color
 				</div></a>
 
 				<a href="https://gist.github.com/nbriz/f6187463e7c0bb9166ac" target="_blank" onclick="closeThis()"><div>
-					<img src="../images/snip6.gif"> <br> oscillate mesh hue
+					<img src="/threejs_playGnd/images/snip6.gif"> <br> oscillate mesh hue
 				</div></a>
 
 				<a href="https://gist.github.com/nbriz/24b503ab96153947fbfe" target="_blank" onclick="closeThis()"><div>
-					<img src="../images/snip7.gif"> <br> oscillate mesh saturation
+					<img src="/threejs_playGnd/images/snip7.gif"> <br> oscillate mesh saturation
 				</div></a>
 
 				<a href="https://gist.github.com/nbriz/c6ebef10e97cec354350" target="_blank" onclick="closeThis()"><div>
-					<img src="../images/snip8.gif"> <br> loop (multiply) mesh
+					<img src="/threejs_playGnd/images/snip8.gif"> <br> loop (multiply) mesh
 				</div></a>
 
 				<a href="https://gist.github.com/nbriz/c6ebef10e97cec354350" target="_blank" onclick="closeThis()"><div>
-					<img src="../images/snip9.gif"> <br> loop mesh (with trails)
+					<img src="/threejs_playGnd/images/snip9.gif"> <br> loop mesh (with trails)
 				</div></a>
 
 				<a href="https://gist.github.com/nbriz/4ee2c35872e44fddc494" target="_blank" onclick="closeThis()"><div>
-					<img src="../images/snip10.gif"> <br> morph (stretch) points
+					<img src="/threejs_playGnd/images/snip10.gif"> <br> morph (stretch) points
 				</div></a>
 
 				<a href="https://gist.github.com/nbriz/9fbfcb815feea9f3ab5a" target="_blank" onclick="closeThis()"><div>
-					<img src="../images/snip11.gif"> <br> morph all points randomly
+					<img src="/threejs_playGnd/images/snip11.gif"> <br> morph all points randomly
 				</div></a>
 
 				<a href="https://gist.github.com/nbriz/d994b193cd2090cb93bf" target="_blank" onclick="closeThis()"><div>
-					<img src="../images/snip12.gif"> <br> create particles
+					<img src="/threejs_playGnd/images/snip12.gif"> <br> create particles
 				</div></a>
 
 				<a href="https://gist.github.com/nbriz/7142d0759d6bca236bb7" target="_blank" onclick="closeThis()"><div>
-					<img src="../images/snip13.gif"> <br> create text
+					<img src="/threejs_playGnd/images/snip13.gif"> <br> create text
 				</div></a>
 
 				<a href="https://gist.github.com/nbriz/53419c61260c1591b500" target="_blank" onclick="closeThis()"><div>
-					<img src="../images/snip14.gif"> <br> dither shader
+					<img src="/threejs_playGnd/images/snip14.gif"> <br> dither shader
 				</div></a>
 
 				<a href="https://gist.github.com/nbriz/ab18e9862ee9a4c1badc" target="_blank" onclick="closeThis()"><div>
-					<img src="../images/snip15.gif"> <br> render as ASCII
+					<img src="/threejs_playGnd/images/snip15.gif"> <br> render as ASCII
 				</div></a>
 
 			</div>
@@ -307,7 +307,7 @@
 
 			//
 
-			var templateCode = 'pVRRb9owEH6GX3FlL0GiCXuoNFFAmiiDSZtWtZ3QniYnPmJ3iZ2dnWYw7b/PdhJaKu1pEUmcu/P3nb/PZn5x82X18O12DcKWxXI4b1+DuUDG3XswL9EyyAQjg3Yxqu3+8t0oJIw9FOhHg1TzA/z2o0HKsh856Vrxy0wXmmbwZh+u65AuGeVSzWDafuonpH2hmxkIyTmqEP3jwZMefZ50ncw9i6cL3BnJyoKhbDES1lazJEmJqRwpJXmMFdqkYKlJrCDER/O9Kthho3jy2IXiUqr40YyWjihALf8T9QYtZlbTv0CXQ780uYcILuBU3GCaFzB+DjDON2h3mG4+fUZjWI7ROIji7ydGkLESiU3AZKhwAoSKIyFd9/kctTOMDhMomUWSrHAjNOI68O9rlVmpFTgv6yoaO9OCD37mDhbQSMV1E0ulkHaSWzGB7avwFmUubGtfz+5KFDbwsL1br+PQ/F2X6bo/VcaO+F4eMYKdh+6yXGd1icrG3uKYVZWrXglZ8Oi0wJjrcl2gr/KzwrRWizPyWyRTOSnlE65CNoKr6QR2yXYCb91v6q6etZ0eV9pIr0l8dEhX02kHHgQ+w773kX5Bz48kgYoZi3DQtfNHc4Q96RKswJMbm68fQbhlDIftBj/zghNrnq0g/Fmjse+VdAa69AdybUahCF5yO1r8VTmHgySNtOIVt1HSCWmNs1/VHfuZFe0g6rdSp2Ynbttjt00CbdtmyL7c3/6EtifTnVT/3/EX';
+			var templateCode = 'dVNdb9owFH2GX3HLXoKUOuyh0gQBaaIMJm1q1XZCezTxTewusTPbIaPT/vtsJ0Cptigfju+591yfY6dXt3fLp+/3K+C2KhfDtPsMUo6Uue8grdBSyDjVBu181Nj8+sMoBIw9lOhHg51iB/jtR4MdzX4UWjWSXWeqVHoK7/JwzUK4oroQcgqT7lftUeelaqfABWMow+wfXzw5Vk+TvpPUs3i6wJ1pUVswOpuPCEmeTWK5RiSVkOTZjBYuPyAW/wbfosXMKv0/7GLoGxE5RHAFJ3CLu6KE8XmCMrZGu8Xd+stXNIYWGI3DEvyzpxoyWqGmMZgMJcagUTLUqGfHeIHKyasPMVTUoha0dCM0fBb480ZmVigJTvmmjsZO4qCaz9zCHFohmWqJkBL1VjDLY9i8md6gKLjtxD6yO4jEFp42D6sVCc0/9JG++xOSOOJH8YIRbH3pPspU1lQoLfGGEFrXDr3komTRaYGEqWpVokf5rJDWaXFBfo/a1E5KscdliEZwM4lhm2xieO/uibuOrF06qZURXhPy4irdTCZ98SDwRe1HP3Nc0PmVJFBTYxEOqnH+KIaQa1WB5XhyY/3tM3C3jOFw2O3HCzOYpu3ZC40/GzT2oxTOQRf+pF2fUQDBa3LHi79qZ3HQpBWWvyE3UjglrXH+y6anv/CiG0THvdTL2avb9djvk0DbtRmirze4P1DdQXIHyx/1vw==';
 
 			var defaultCode = decode( templateCode);
 
@@ -536,7 +536,7 @@
 
 				var form = document.createElement( 'form' );
 				form.setAttribute("method","post");
-				form.setAttribute("action","http://threejsplaygnd.brangerbriz.net/archive/index.php");
+				form.setAttribute("action","/threejs_playGnd/archive/index.php");
 				form.setAttribute("name","form");
 				// form.setAttribute("onsubmit","return validateForm()");
 
@@ -919,17 +919,6 @@
 			//save();
 
 		</script>
-
-		<script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-		  ga('create', 'UA-6098550-26', 'brangerbriz.net');
-		  ga('send', 'pageview');
-
-		</script>	
 
 	</body>
 </html>

@@ -179,7 +179,7 @@ if(isset($_POST['sketchCode'])) {
 					}
 
 					mysqli_close($con);
-				
+
 				?>
 
 			];
@@ -187,8 +187,8 @@ if(isset($_POST['sketchCode'])) {
 			 <?php
 
 				if(isset($_POST['sketchCode'])) {
-					$con=mysqli_connect("myhost","myuser","mypassw","mybd");
-					//$con=mysqli_connect("myhost","myuser","mypassw","mybd");
+					$con=mysqli_connect("mysql-server","root","secret","mydb");
+					//$con=mysqli_connect("mysql-server","myuser","mypassw","mydb");
 					// Check connection
 					if (mysqli_connect_errno()) {
 					  echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -198,7 +198,7 @@ if(isset($_POST['sketchCode'])) {
 					while($row = mysqli_fetch_array($result)){
 					  $lastID = $row['id'];
 					}
-					print 'alert("your sketch has been added to the archive >> navigate down to find it or copy this short_url >> http://threejsplaygnd.brangerbriz.net/s/?id=' . $lastID . '")'; 
+					print 'alert("your sketch has been added to the archive >> navigate down to find it or copy this short_url >> //s/?id=' . $lastID . '")';
 
 
 					mysqli_close($con);
@@ -207,17 +207,17 @@ if(isset($_POST['sketchCode'])) {
 
 			var objArrays = [];			// css3 objects
 			var targsArrays = [];		// target locations for tweening
-			
+
 			var camera, scene, renderer, container;
 
 			var mouseX = 0, mouseY = 0;
 			var windowHalfX = window.innerWidth / 2;
 			var windowHalfY = window.innerHeight / 2;
-			
+
 			// global vars for navigation
 			var currentID = 'id1';
-			var showingforks = false;	
-			var history = [];
+			var showingforks = true;
+			var myHistory = [];
 
 			var inTween = 500;
 			var outTween = 300;
@@ -259,9 +259,9 @@ if(isset($_POST['sketchCode'])) {
 
 			function makeColumn(forkof) {
 
-		    	oCnt = history.length;
+		    	oCnt = myHistory.length;
 
-		    	var cnt = 0;	// for y (targets) positioning 
+		    	var cnt = 0;	// for y (targets) positioning
 
 		    	// console.log("new objArrays[ "+oCnt+" ]");
 
@@ -273,21 +273,21 @@ if(isset($_POST['sketchCode'])) {
 		    	targsArrays[oCnt] = targs;
 		    	var targets = targsArrays[oCnt];	// create new array + add to targsArrays (ie. column's final elements position)
 
-		    	var itemIDz = [];					// collect all id's in this column for history array
+		    	var itemIDz = [];					// collect all id's in this column for myHistory array
 
 				for ( var i = 0; i < data.length; i ++ ) {
 
-					if(data[ i ][4] == forkof){ 
+					if(data[ i ][4] == forkof){
 
 						// ---------------- make objects (CSS3Objects)
-						
+
 						var item = data[ i ];
 
 						itemIDz.push(item[ 3 ]);
 
 						var frame = document.createElement( 'a' );
 						frame.className = 'frame';
-						frame.href = "http://brangerbriz.net/labs/threejs_playGnd/editor/?id="+ item[3] +"#B/" + item[2];
+						frame.href = "/threejs_playGnd/editor/?id="+ item[3] +"#B/" + item[2];
 						frame.target = "_blank";
 						frame.name = item[ 2 ];
 						frame.id = item[ 3 ];
@@ -315,14 +315,14 @@ if(isset($_POST['sketchCode'])) {
 						});
 
 						frame.addEventListener( 'mouseout', function ( event ) {
-							if(this.id != currentID) {			
-								var t = document.getElementById(this.id);				
+							if(this.id != currentID) {
+								var t = document.getElementById(this.id);
 									t.style.borderColor = '#000';
 									t.children[0].style.background = '#000';
 									t.children[0].children[0].style.color = '#fff';
 									t.children[0].children[1].style.color = '#fff';
 							} else {
-								var t = document.getElementById(this.id);				
+								var t = document.getElementById(this.id);
 									t.style.borderColor = 'rgba(228,63,140,0.6)';
 									t.children[0].style.background = 'rgba(228,63,140,0.6)';
 									t.children[0].children[0].style.color = '#fff';
@@ -341,21 +341,25 @@ if(isset($_POST['sketchCode'])) {
 
 						container.add( object );
 
-						objects.push( object );	
+						objects.push( object );
 
 						// ---------------- make targets (ie. tweening destination)
 
 						var twObject = new THREE.Object3D();
-						twObject.position.x = ( (history.length+1) * 950 ) - 700;
+						twObject.position.x = ( (myHistory.length+1) * 950 ) - 700;
 						twObject.position.y = - ( cnt * 400 ) + 1100;
 						targets.push( twObject );
 
 						cnt++;
 					}
+					// } else if (data[ i ][4] !== ""){
+					// 	makeColumn(data[ i ][4]);
+					//
+					// }
 
 				}
-				
-				history.push(itemIDz);				// add id array to history array
+
+				myHistory.push(itemIDz);				// add id array to myHistory array
 				tweenin( inTween, objects, targets );
 
 
@@ -371,7 +375,7 @@ if(isset($_POST['sketchCode'])) {
 				var o = objs;
 				var t = targs;
 
-				for ( var i = 0; i < o.length; i ++ ) { 
+				for ( var i = 0; i < o.length; i ++ ) {
 
 					var object = o[ i ];
 					var target = t[ i ];
@@ -393,7 +397,7 @@ if(isset($_POST['sketchCode'])) {
 				// TWEEN.removeAll();
 				var o = objs;
 
-				for ( var i = 0; i < o.length; i ++ ) { 
+				for ( var i = 0; i < o.length; i ++ ) {
 
 					var object = o[ i ];
 					var ranPos = Math.random() * 4000 - 2000;
@@ -507,7 +511,7 @@ if(isset($_POST['sketchCode'])) {
 				if(h>=360){ h=0; }
 				var bgh = document.body.style;
 				bgh.background =  "hsl("+h+",50%, 50%)";
-			} 
+			}
 			setInterval(bgHue,50);
 
 
@@ -540,7 +544,7 @@ if(isset($_POST['sketchCode'])) {
 				nfo.style.opacity = fcnt;
 				fcnt-=inc;
 
-				if(fcnt >= 0){ setTimeout("fadeOut()",10); } 
+				if(fcnt >= 0){ setTimeout("fadeOut()",10); }
 				else { nfo.style.opacity = 0; }
 			}
 
@@ -550,13 +554,13 @@ if(isset($_POST['sketchCode'])) {
 			// ------------------------------------------------------------------------------------------------------------
 
 			// current coordinates on grid
-			var curX = 0;	
+			var curX = 0;
 			var curY = 0;
-			var Yparents = [];	// history of where curY left off before moving-right to fork column
+			var Yparents = [];	// myHistory of where curY left off before moving-right to fork column
 			var colHeight = objArrays[objArrays.length-1].length;
-		
-			document.getElementById(currentID).style.borderColor = 'rgba(228,63,140,0.6)'; 
-			document.getElementById(currentID).firstChild.style.background = 'rgba(228,63,140,0.6)'; 
+
+			document.getElementById(currentID).style.borderColor = 'rgba(228,63,140,0.6)';
+			document.getElementById(currentID).firstChild.style.background = 'rgba(228,63,140,0.6)';
 
 			document.onkeydown=function(e){
 			    var e=window.event || e
@@ -566,29 +570,29 @@ if(isset($_POST['sketchCode'])) {
 				    	curX--;
 				    	curY = Yparents[Yparents.length-1];
 				    	navigate('left');
-				    	Yparents.pop();	
-						// if(history.length>4){
+				    	Yparents.pop();
+						// if(myHistory.length>4){
 							tweenleft();
-						// }		    		
+						// }
 			    	}
 			    	if(fcnt==1){fadeOut();}
 			    }
 
 			    if(e.keyCode == 38) { //up
 			    	if(curY>0){
-						curY--; 
+						curY--;
 						navigate('up');
 			    	}
 			    	if(fcnt==1){fadeOut();}
 			    }
 
 			    if(e.keyCode == 39) { //right
-			    	if(curX < (history.length-1)){
+			    	if(curX < (myHistory.length-1)){
 				    	Yparents.push(curY);
 				    	curY = 0;
 				    	curX++;
 				    	navigate('right');
-						// if(history.length>3){
+						// if(myHistory.length>3){
 							tweenright();
 						// }
 			    	}
@@ -599,7 +603,7 @@ if(isset($_POST['sketchCode'])) {
 			    	if(curY < colHeight-1){
 						curY++;
 						navigate('down');
-			    	} 
+			    	}
 			    	if(fcnt==1){fadeOut();}
 			    }
 
@@ -611,17 +615,17 @@ if(isset($_POST['sketchCode'])) {
 
 			function navigate(direction){
 
-				var id = history[ curX ][ curY ];
+				var id = myHistory[ curX ][ curY ];
 				var prevId = currentID;
 				currentID = id;
 
-				document.getElementById(id).style.borderColor = 'rgba(228,63,140,0.6)'; 
-				document.getElementById(id).firstChild.style.background = 'rgba(228,63,140,0.6)'; 
+				document.getElementById(id).style.borderColor = 'rgba(228,63,140,0.6)';
+				document.getElementById(id).firstChild.style.background = 'rgba(228,63,140,0.6)';
 
-				document.getElementById(prevId).style.borderColor = '#000'; 
-				document.getElementById(prevId).firstChild.style.background = '#000'; 	
+				document.getElementById(prevId).style.borderColor = '#000';
+				document.getElementById(prevId).firstChild.style.background = '#000';
 
-				bg.setValue(decode(document.getElementById(id).name)); 
+				bg.setValue(decode(document.getElementById(id).name));
 				document.getElementById('bg').children[0].children[0].style.top = "0px";	// fix CodeMirror bug
 				document.getElementById('bg').children[0].children[2].style.height = "0px"; // fix CodeMirror bug
 
@@ -700,20 +704,10 @@ if(isset($_POST['sketchCode'])) {
 				}
 
 				colHeight = objArrays[curX].length; // for 'down' conditional
-			
-			}	
+
+			}
 
 		</script>
-		<script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-		  ga('create', 'UA-6098550-26', 'brangerbriz.net');
-		  ga('send', 'pageview');
-
-		</script>
-		
 	</body>
 </html>
